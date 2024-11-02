@@ -1,17 +1,10 @@
+import { Routes, Route } from "react-router-dom";
 import { useState } from 'react'
-
-
+import Router from './routes'
 
 function App() {
-  
-
   return (
-    <>
-      <div>
-        <p>home</p>
-      </div>
-      
-    </>
+  <Router/>
   )
 }
 
