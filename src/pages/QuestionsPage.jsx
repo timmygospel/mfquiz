@@ -20,6 +20,7 @@ const QuestionsPage = () => {
 
   const getAllCategories = async () => {
     const fetchedCategories = await categoryApi.getCategories();
+    console.log('--- fetchedCategories ---', fetchedCategories);
     setCategories(fetchedCategories);
   };
 

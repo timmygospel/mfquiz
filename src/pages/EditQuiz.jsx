@@ -1,21 +1,18 @@
 // src/components/EditQuiz.js
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   addQuizTitle,
   addQuestion,
-  loadQuizForEdit,
   updateQuestionText,
-  addOption,
-  updateOptionText,
-  removeOption,
-  setCorrectOption,
-  selectQuestion,
+  loadQuizForEdit,
 } from "../redux/reducers/quizReducer";
 import quizService from "../services/quizApi";
+import QuestionModal from "../components/QuestionModal";
 
 const EditQuiz = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -30,6 +27,7 @@ const EditQuiz = () => {
       try {
         console.log(" entering fetchQuiz = ", id);
         const quiz = await quizService.getQuizById(id);
+        console.log("edit quiz ", quiz);
         dispatch(
           loadQuizForEdit({
             title: quiz.quiz,
@@ -38,7 +36,6 @@ const EditQuiz = () => {
           })
         );
       } catch (err) {
-        setError("Failed to load the quiz.");
         console.error(err);
       } finally {
         setLoading(false);
@@ -85,6 +82,10 @@ const EditQuiz = () => {
 
   const handleSelectQuestion = (index) => {
     dispatch(selectQuestion(index));
+  };
+
+  const handleAddExistingQuestion = (questionIds) => {
+    dispatch(addQuestionsToQuiz({ quizId: editingQuizId, questionIds }));
   };
 
   const handleSaveQuiz = async () => {
@@ -227,6 +228,14 @@ const EditQuiz = () => {
           <button type="button" onClick={handleAddQuestion}>
             Add Question
           </button>
+          <button onClick={() => setModalOpen(true)}>
+            Add Existing Questions
+          </button>
+          <QuestionModal
+            isOpen={isModalOpen}
+            onClose={() => setModalOpen(false)}
+            onAddQuestions={handleAddExistingQuestion}
+          />
           <button type="button" onClick={handleSaveQuiz} disabled={saving}>
             {saving ? "Saving..." : "Save Quiz"}
           </button>

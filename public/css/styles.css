@@ -1,18 +1,24 @@
 body {
   margin: 0;
   padding: 0;
-  color: #000;
+  color: #2b2828;
   font-family: 'Open Sans', Helvetica, sans-serif;
   box-sizing: border-box;
+  
 }
 
+.logo {
+  padding: 10px;
+}
+
+/* DashboardLayout  */
 /* Assign grid instructions to our parent grid container, mobile-first (hide the sidenav) */
 .grid-container {
   display: grid;
-    grid-template-columns: 200px 1fr; /* 200px for aside, the rest for content */
+    grid-template-columns: 150px 1fr; /* 200px for aside, the rest for content */
     grid-template-rows: auto 1fr auto; /* Header, content, footer */
     grid-template-areas:
-        " header header"
+        " aside main"
         "aside main"
         "footer footer";
     height: 100vh;
@@ -32,17 +38,129 @@ body {
   padding: 12px;
 }
 
+.content-container {
+  background-color:#fff;
+  height:100vh;
+ }
+
+ .quiz-container-rightside {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+ 
+ }
+  
+ 
+
+ .quiz-list {
+  background-color: #EFEDE9;
+  font-family: Arial, sans-serif;
+  border-top-left-radius:35px;
+  height: 100vh;
+}
+
+.sidenav-circle {
+  background-color: #212133;
+  width: 80%;
+  height: 90vh;
+  border-top-right-radius: 20%;
+  
+  border-top-left-radius: 20%;
+
+}
+
+/* Highly Rounded Sidebar */
+.rounded-sidenav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  height: calc(100vh - 2rem); /* Keeps the sidebar inset with padding from top and bottom */
+  width: 50px; /* Slightly wider for balance */
+  background-color: #1A192E; /* Primary Blue */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+ 
+  padding: 2rem 1.5rem;
+  border-radius: 100px; /* More rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Prevents content overflow */
+}
+
+/* Logo Section */
+.sidenav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.logo-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  color: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Navigation Menu */
+.sidenav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav__list-item {
+  margin-bottom: 1.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 50px; /* Makes the nav items pill-shaped */
+  transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-icon {
+  font-size: 1.25rem;
+}
+
+/* Footer Section */
+.sidenav__footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 /* Give every child element its grid name */
 .header {
   grid-area: header;
-  background-color: #b31717;
-  color: white;
+  color: rgb(33, 32, 32);
   padding: 10px;
   text-align: center;
   display: flex;  /* Flexbox for header content */
   justify-content: center;
   align-items: center;
   height:47px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 /* Make room for the menu icon on mobile */
@@ -55,45 +173,41 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
- 
+ color: #fff;
   background-color: #fff;
+
+ 
 }
 
 .sidenav.active {
   transform: translateX(0);
 }
 
-
-.sidenav__list {
-  padding: 0;
-  margin-top: 85px;
-  list-style-type: none;
-  color: #000;
+input {
+  width:20%;
+  padding:22px 20px;
+  margin: 8px 0;
+  border: 2px solid #F0F1F3;
+  border-radius: 6px;
 }
 
-.sidenav__list-item {
-  padding: 20px 20px 20px 40px;
-  color: #0f0e0e;
-}
-
-.sidenav__list-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-}
+.option-input {
+  width:80%;
+ }
 
 .main {
   grid-area: main;
-  background-color: #fff;
+  background-color: #F0F1F3;
 }
 .nav-item {
   
   border: none;
-  color: #000;
-  padding: 15px 32px;
+  color: #787575;
+  padding:5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
 }
 .main-header {
   display: flex;
@@ -102,13 +216,173 @@ body {
   padding: 20px;
   height: 150px;
 
-  color: slategray;
+  color: #fff;
 }
+
+
+.quiz-container {
+  width:60%;
+  margin:auto;
+}
+
+.questions-grid {
+  display: grid;
+  grid-template-areas:
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 15% 1fr;
+  grid-template-rows: 1fr auto;
+  height: 80vh;
+}
+
+
+.add_question {
+display: flex;
+justify-content: center;
+}
+
+.addQuestion_container {
+  width: 100%;
+  /* display: flex;  
+justify-content: center;  
+align-items: center; */
+margin-top: 15px;  
+
+}
+/* Style the check circle with a thinner green border */
+.check-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px; /* Reduce size for a sleeker look */
+  height: 15px;
+  border: 1px solid #4CAF50; /* Green border */
+  border-radius: 50%; /* Makes it a circle */
+  background-color: white; /* White inside */
+  margin-right: 10px;
+}
+/* Style the tick icon */
+.check-circle i {
+  font-size: 25px; /* Adjust size for balance */
+  color: #ccc;
+}
+
+.fa-check-circle {
+  font-size: 25px;
+ 
+}
+
+.fa-trash-can {
+  font-size: 18px;
+  color: #4e4e4e;
+}
+
+
+
+/* Sidebar styles */
+.sidebar {
+  grid-area: sidebar;
+ 
+  color: #000;
+  padding: 20px;
+}
+
+.question-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  min-height: 100px;
+}
+
+.question-card:hover {
+
+  
+}
+
+.question-card:active {
+  transform: translateY(2px);
+}
+
+/* Main content styles */
+.content {
+  grid-area: content;
+  padding: 20px;
+  background-color: #fff;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 1px #E5E5E5;
+  overflow-y: hidden;
+  border-color: #262626;
+  margin-right: 1px;
+  border-radius: 8px;
+  
+}
+.first {
+ 
+ 
+  display: flex;  
+
+  
+}
+
+.quiz-container {
+  width: 90%;
+ background-color: #4CAF50;
+}
+
+.quiz-items {
+  
+  
+  width: 80%;
+}
+
+.question-input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.question-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.question-option input {
+  margin-right: 10px;
+}
+
+.icons {
+  display: flex;
+ 
+  margin-left: 10px;
+ 
+}
+
+/* Footer styles */
+.footer {
+  grid-area: footer;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
 .question_input {
   padding-bottom: 2px;
 }
 
+.quiz-title-input {
+  width: 50px;
+}
 
+.create-quiz-footer {
+  background-color: #dbdee0;
+
+}
 .btn-Create-quiz {
   height: 36px;
   font-size: 12px;
@@ -179,10 +453,12 @@ body {
 .footer {
   grid-area: footer;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items:end;
+  justify-content: flex-end;
   padding: 0 16px;
-  background-color: #fff;
+  border-right: 1px solid #787575;
+  background-color: #f8f9fa;
+  padding: 10px;
 }
 
 .modal-sidebar {
@@ -306,6 +582,10 @@ body {
   flex: 1;
 }
 
+.create-quiz-title-input {
+  width: 80%;
+  
+}
 .quiz-title-input {
   width: 100%;
   padding: 10px;
@@ -335,7 +615,7 @@ body {
 
 .option-block button {
   padding: 5px 10px;
-  background-color: #ff4d4d;
+ background-color: #ff4d4d;
   color: white;
   border: none;
   cursor: pointer;
@@ -363,6 +643,418 @@ button:hover {
 button:disabled {
   background-color: #aaa;
   cursor: not-allowed;
+}
+
+
+.quiz-creator {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  
+  
+  overflow-y: auto;
+  
+  color: #000;
+ 
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar ul li.selected {
+  background-color: #ddd;
+}
+
+.editor {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.editor input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+.editor button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.editor button:hover {
+  background-color: #45a049;
+}
+
+.editor label {
+  margin-left: 10px;
+}
+
+.editor div {
+  margin-bottom: 20px;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  animation: fadeIn 0.3s;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.pagination li a:hover {
+  color: #0056b3;
+}
+
+.pagination .active {
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+
+
+.quiz-item {
+  margin-bottom: 15px;
+  list-style: none;
+}
+
+.quiz-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-info {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.quiz-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.quiz-info p {
+  margin: 5px 0 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.quiz-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.edit-link:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.delete-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.delete-button:hover:not(:disabled) {
+  background-color: #c82333;
+}
+/* Container */
+.question-list-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* List styling */
+.question-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.question-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  transition: box-shadow 0.2s;
+}
+
+.question-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Question content */
+.question-content {
+  flex: 1;
+}
+
+.question-content p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.question-category {
+  font-style: italic;
+  color: #555;
+}
+
+/* Action buttons */
+.question-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.edit-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #e53935;
+}
+
+/* Pagination styling */
+.pagination {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination button {
+  border: 1px solid #ddd;
+  background-color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination button:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination .active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+/* Sidebar Container */
+.sidenav {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 280px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+/* Logo Section */
+.sidenav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Navigation Menu */
+.sidenav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav__list-item {
+  margin-bottom: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  color: #4a5568; /* Neutral gray */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: #ebf8ff; /* Light blue background */
+  color: #3182ce; /* Dark blue text */
+}
+
+.nav-icon {
+  font-size: 1.25rem; /* Icon size */
+}
+
+/* Footer */
+.sidenav__footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #a0aec0; /* Light gray */
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 
